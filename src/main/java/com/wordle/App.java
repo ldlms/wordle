@@ -1,10 +1,17 @@
 package com.wordle;
 
+import com.wordle.api.ApiClient;
+import com.wordle.game.Game;
+
 /**
  * Hello world!
  */
 public class App {
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        ApiClient  apiClient = new ApiClient();
+        Game game = new Game(apiClient);
+        System.out.println("=== WORDLE ===");
+        game.startGame();
+
     }
 }
