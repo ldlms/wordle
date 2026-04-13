@@ -2,7 +2,7 @@ package com.wordle.game;
 
 import com.wordle.api.ApiClient;
 import com.wordle.dto.Response;
-import com.wordle.dto.Status;
+import com.wordle.interfaces.ApiService;
 import com.wordle.services.GameService;
 import java.util.List;
 import java.util.Scanner;
@@ -16,7 +16,7 @@ public class Game {
     Scanner scanner = new Scanner(System.in);
     private final GameService service = new GameService();
 
-    public Game(ApiClient apiClient) {
+    public Game(ApiService apiClient) {
         this.word = apiClient.callApi();
     }
 
