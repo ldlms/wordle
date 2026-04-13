@@ -3,9 +3,7 @@ package com.wordle;
 import com.wordle.api.ApiClient;
 import com.wordle.game.Game;
 
-/**
- * Hello world!
- */
+
 public class App {
     public static void main(String[] args) {
         ApiClient  apiClient = new ApiClient();

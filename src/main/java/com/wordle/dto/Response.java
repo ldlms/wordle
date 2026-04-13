@@ -22,6 +22,10 @@ public record Response(List<Status> letters) {
         return new Response(new ArrayList<>(List.of(Status.INCORRECT, Status.INCORRECT, Status.INCORRECT, Status.INCORRECT, Status.INCORRECT)));
     }
 
+    public boolean isGameWon(){
+        return !this.letters.contains(Status.INCORRECT) && !this.letters.contains(Status.MISPLACED);
+    }
+
     public void setLetter(int letter, Status status) {
         letters.set(letter, status);
     }

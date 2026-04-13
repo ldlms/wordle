@@ -21,19 +21,33 @@ public class GameService {
             wordToGuess.computeIfAbsent(c, k -> new ArrayList<>()).add(i);
         }
 
-        for (Map.Entry<Character, List<Integer>> entry : wordToGuess.entrySet()) {
-            entry.getValue().forEach(i -> {
-                if (userGuess.containsKey(entry.getKey())) {
-                    entry.getValue().forEach(j -> {
-                        if (userGuess.get(entry.getKey()).contains(j)) {
-                            response.setLetter(i,Status.CORRECT);
-                        }else{
-                            response.setLetter(i,Status.MISPLACED);
-                        }
-                    });
+        for (Map.Entry<Character, List<Integer>> entry : userGuess.entrySet()) {
+            List<Integer> toRemove = new ArrayList<>();
+            for (Integer i : entry.getValue()) {
+                if (wordToGuess.get(entry.getKey()) != null) {
+                    if (wordToGuess.get(entry.getKey()).contains(i)) {
+                        toRemove.add(i);
+                    }
                 }
+            }
+            for (Integer i : toRemove) {
+                wordToGuess.get(entry.getKey()).remove(i);
+                userGuess.get(entry.getKey()).remove(i);
+                response.setLetter(i, Status.CORRECT);
+            }
+        }
+
+        for (Map.Entry<Character, List<Integer>> entry : userGuess.entrySet()) {
+            entry.getValue().forEach(i -> {
+                if(wordToGuess.get(entry.getKey()) != null && !wordToGuess.get(entry.getKey()).isEmpty()){
+                    response.setLetter(i, Status.MISPLACED);
+                    wordToGuess.get(entry.getKey()).remove(wordToGuess.get(entry.getKey()).remove(wordToGuess.get(entry.getKey()).size()-1));
+                }
+
             });
         }
+
+
         return response;
 
     }

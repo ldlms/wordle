@@ -25,16 +25,19 @@ public class Game {
         System.out.print("le not recherché est :" + this.word);
         while(scanner.hasNextLine() && !isGameComplete){
             String input = scanner.nextLine();
-            service.processInput(input, this.word);
             Response response = this.service.processInput(input, this.word);
             System.out.println(response.display());
             remaningTries--;
+            if(response.isGameWon()){
+                System.out.println("bravo c'est gagné");
+                isGameComplete = true;
+            }
             if(!(remaningTries == 0) && !isGameComplete){
                 System.out.println("encore " + remaningTries + " essais");
                 startGame();
             }
-
             System.out.println("partie terminée, la bonne réponse etait" + this.word);
+            scanner.close();
         }
     }
 }
