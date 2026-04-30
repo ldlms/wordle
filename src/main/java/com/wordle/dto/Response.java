@@ -6,12 +6,6 @@ import java.util.stream.Collectors;
 
 public record Response(List<Status> letters) {
 
-    public Response {
-        if (letters.size() != 5) {
-            throw new IllegalArgumentException("Le mot doit faire 5 lettres");
-        }
-    }
-
     public String display() {
         return letters.stream()
                 .map(Status::getSymbol)

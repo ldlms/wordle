@@ -9,7 +9,6 @@ public class App {
     public static void main(String[] args) {
         ApiService apiClient = new ApiClient();
         Game game = new Game(apiClient);
-        System.out.println("=== WORDLE ===");
         game.startGame();
 
     }

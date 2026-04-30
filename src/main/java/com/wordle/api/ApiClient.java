@@ -38,6 +38,10 @@ public class ApiClient implements ApiService {
 
     }
 
+    @Override
+    public List<String> callTestApi(String word) {
+        return List.of();
+    }
 
 
 }
