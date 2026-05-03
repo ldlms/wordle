@@ -3,4 +3,4 @@ Wordle :
 Lancement du jeu :
 
 Cloner le repository, et lancer la main class, le jeu s'effectue via le cli de l'ide
-Lancement de l'integralité des tests via la commande : ```mvn test```
+Lancement de l'integralité des tests via la commande : ```docker compose exec card_app npx prisma migrate dev```
