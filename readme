@@ -2,5 +2,26 @@ Wordle :
 
 Lancement du jeu :
 
-Cloner le repository, et lancer la main class, le jeu s'effectue via le cli de l'ide
-Lancement de l'integralité des tests via la commande : ```docker compose exec card_app npx prisma migrate dev```
+Cloner le repository, et lancer la main class, le jeu s'effectue via le cli de l'IDE
+Lancement de l'integralité des tests via la commande : mvn test
+Lancement d'une classe en particulier : mvn -Dtest=<nomdelaclasse> test
+Lancement d'une methode de test : mvn -Dtest=<nomdelamethode> test
+
+Résumé du projet :
+
+Le projet utilise une API afin de recupérer un mot en francais de cinq lettres, l'utilisateur aura alors six tentatives pour trouver le moy.
+Les tests demandés dans le cadre de l'exercice couvrent les trois "couches" de l'application, a savoir :
+
+- La couche chargée de l'input/output, dans un premier temps j'avais décidé d'utiliser le cli de L'IDE dans un but de simplicité, mais au moment d'ecrire les tests, 
+je me suis rendu compte qu'il etait penible de tester les input/output du cli java, de plus, le couplage fort entre mon code metier et le scanner java contravenait à la consigne de l'exercice.
+J'ai donc découplé le composant UI du code métier contenu dans le fichier Game, et j'ai crée une interface permettant de separer les input de l'utilisateur de la gestion de la partie.
+Le fichier GameTest simule des input utilisateurs grace à une implémentation de l'interface GameUI. Sert à tester la gestion du nombre de manches restantes et les messages renvoyés en cas de victoire/defaite, 
+ainsi que la demande de l'utilisateur pour une nouvelle partie. Afin de simuler l'API, c'est une implémentation de test qui sera utilisée la-aussi, permettant de choisir le mot qui devra étre deviné dans le cadre de la methode de test.
+
+- Le GameServiceTest va tester la fonctionalité principale de l'application, à savoir l'attribution de determiner quelle lettre de la proposition de l'utilisateur est correcte, mal placée ou incorrecte
+Tout en prenant en compte la régle specifique des lettres multiples.
+
+- Le WordServiceTest va tester les différentes méthodes du Word service, chargées de normaliser les inputs de l'api et de l'utilisateur, tels que la longueur des inputs ou la gestion des accents.
+
+
+
