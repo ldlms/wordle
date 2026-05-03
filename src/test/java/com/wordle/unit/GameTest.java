@@ -1,45 +1,84 @@
 package com.wordle.unit;
 
+import com.wordle.UI.TestGameUI;
 import com.wordle.api.ApiClientTest;
 import com.wordle.game.Game;
 import com.wordle.services.GameService;
 import com.wordle.services.WordService;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
-import java.io.PrintStream;
-import java.util.Scanner;
+import java.util.List;
 
-public class GameTest {
+import static org.assertj.core.api.Assertions.assertThat;
+
+class GameTest {
 
 
-    private ByteArrayOutputStream consoleOutput;
-    private final PrintStream originalOut = System.out;
-    private final InputStream originalIn = System.in;
+    @Test
+    void ShouldWinOnFirstTryAndHaveFiveTryLeft() {
+        TestGameUI ui = new TestGameUI("livre", "n");
+        Game game = new Game(new ApiClientTest("LIVRE"), ui, new GameService(), new WordService());
 
-    @BeforeEach
-    void setUp() {
-        consoleOutput = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(consoleOutput));
+        game.startGame();
+
+        assertThat(ui.displayedMessages).contains("Bravo !");
+        assertThat(game.remainingTries).isEqualTo(5);
     }
 
-    @AfterEach
-    void tearDown() {
-        System.setOut(originalOut);
-        System.setIn(originalIn);
+    @Test
+    void ShouldWinOnThirdTryAndHaveThreeTryLeft() {
+        TestGameUI ui = new TestGameUI("crabe", "arbre", "crane", "n");
+        Game game = new Game(new ApiClientTest("CRANE"), ui, new GameService(), new WordService());
+
+        game.startGame();
+
+        assertThat(ui.displayedMessages).contains("Bravo !");
+        assertThat(game.remainingTries).isEqualTo(3);
     }
 
+    @Test
+    void ShouldLooseAfterAllTriesAreUsed() {
+        TestGameUI ui = new TestGameUI("crabe","arbre","barbe","grand","gland","gorge", "n");
+        Game game = new Game(new ApiClientTest("CRANE"), ui, new GameService(), new WordService());
 
-    private Game createTestGame(String word, String input){
-        ApiClientTest apiClient = new ApiClientTest();
-        apiClient.callTestApi(word);
-        Scanner scanner = new Scanner(new ByteArrayInputStream(input.getBytes()));
-        Game game = new Game(apiClient,scanner, new GameService(),new WordService());
-        return game;
+        game.startGame();
+
+        assertThat(ui.displayedMessages).contains("Perdu ! La réponse était : " + List.of("C", "R", "A", "N", "E"));
+        assertThat(game.remainingTries).isEqualTo(0);
     }
 
+    @Test
+    void ShouldWinAfterAnErrorIsCAughtBecauseOfWordLength() {
+
+        TestGameUI ui = new TestGameUI("troplongtroplong", "CRANE", "n");
+        Game game = new Game(new ApiClientTest("CRANE"), ui, new GameService(), new WordService());
+
+        game.startGame();
+
+        assertThat(ui.displayedMessages).anyMatch(m -> m.startsWith("ERREUR:"));
+        assertThat(ui.displayedMessages).contains("Bravo !");
+    }
+
+    @Test
+    void ShouldWinThenAskForAReplayThenQuitHavingWonTwoTimes() {
+        TestGameUI ui = new TestGameUI("crane", "y", "crane", "n");
+        Game game = new Game(new ApiClientTest("CRANE"), ui, new GameService(), new WordService());
+
+        game.startGame();
+
+        long winCount = ui.displayedMessages.stream().filter("Bravo !"::equals).count();
+        assertThat(winCount).isEqualTo(2);
+    }
+
+    @Test
+    void ShouldWinThenQuit() {
+        TestGameUI ui = new TestGameUI("crane", "n");
+        Game game = new Game(new ApiClientTest("CRANE"), ui, new GameService(), new WordService());
+
+        game.startGame();
+
+        long winCount = ui.displayedMessages.stream().filter("Bravo !"::equals).count();
+        assertThat(winCount).isEqualTo(1);
+    }
 
 }

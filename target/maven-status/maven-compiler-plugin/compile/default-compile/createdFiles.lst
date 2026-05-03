@@ -1,0 +1,13 @@
+com\wordle\api\ApiClientTest.class
+com\wordle\UI\TestGameUI.class
+com\wordle\api\ApiClient.class
+com\wordle\dto\ResponseList.class
+com\wordle\services\GameService.class
+com\wordle\game\Game.class
+com\wordle\services\WordService.class
+com\wordle\UI\ConsoleGameUI.class
+com\wordle\interfaces\GameUI.class
+com\wordle\dto\Status.class
+com\wordle\dto\Response.class
+com\wordle\App.class
+com\wordle\interfaces\ApiService.class

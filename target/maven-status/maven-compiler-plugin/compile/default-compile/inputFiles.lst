@@ -1,0 +1,14 @@
+C:\Users\leo\IdeaProjects\wordle\src\main\java\com\wordle\api\ApiClient.java
+C:\Users\leo\IdeaProjects\wordle\src\main\java\com\wordle\api\ApiClientTest.java
+C:\Users\leo\IdeaProjects\wordle\src\main\java\com\wordle\App.java
+C:\Users\leo\IdeaProjects\wordle\src\main\java\com\wordle\dto\Response.java
+C:\Users\leo\IdeaProjects\wordle\src\main\java\com\wordle\dto\ResponseList.java
+C:\Users\leo\IdeaProjects\wordle\src\main\java\com\wordle\dto\Status.java
+C:\Users\leo\IdeaProjects\wordle\src\main\java\com\wordle\exceptions\IncorrectSizeForInput.java
+C:\Users\leo\IdeaProjects\wordle\src\main\java\com\wordle\game\Game.java
+C:\Users\leo\IdeaProjects\wordle\src\main\java\com\wordle\interfaces\ApiService.java
+C:\Users\leo\IdeaProjects\wordle\src\main\java\com\wordle\interfaces\GameUI.java
+C:\Users\leo\IdeaProjects\wordle\src\main\java\com\wordle\services\GameService.java
+C:\Users\leo\IdeaProjects\wordle\src\main\java\com\wordle\services\WordService.java
+C:\Users\leo\IdeaProjects\wordle\src\main\java\com\wordle\UI\ConsoleGameUI.java
+C:\Users\leo\IdeaProjects\wordle\src\main\java\com\wordle\UI\TestGameUI.java

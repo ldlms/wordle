@@ -1,6 +1,6 @@
 package com.wordle.services;
 
-import com.wordle.exceptions.InputTooLongException;
+import com.wordle.exceptions.IncorrectSizeForInput;
 
 import java.text.Normalizer;
 import java.util.ArrayList;
@@ -60,7 +60,7 @@ public class WordService {
 
     public void verifyInput(String input){
      if(input.length() != 5){
-         throw new InputTooLongException();
+         throw new IncorrectSizeForInput();
      }
     }
 }

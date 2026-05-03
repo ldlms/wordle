@@ -5,7 +5,7 @@ import java.util.List;
 
 public class ResponseList {
 
-    List<Response> responses = new ArrayList<>();
+    public List<Response> responses = new ArrayList<>();
 
     public List<String> getResponses() {
         return responses.stream().map(Response::display).toList();
