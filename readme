@@ -1,0 +1,6 @@
+Wordle :
+
+Lancement du jeu :
+
+Cloner le repository, et lancer la main class, le jeu s'effectue via le cli de l'ide
+Lancement de l'integralité des tests via la commande : ```mvn test```
