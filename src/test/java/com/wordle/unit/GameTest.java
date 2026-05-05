@@ -15,7 +15,7 @@ class GameTest {
 
 
     @Test
-    void ShouldWinOnFirstTryAndHaveFiveTryLeft() {
+    void ShouldHaveFiveTryLeftGivenGoodTryOnFirstGuess() {
         TestGameUI ui = new TestGameUI("livre", "n");
         Game game = new Game(new ApiClientTest("LIVRE"), ui, new GameService(), new WordService());
 
@@ -26,7 +26,7 @@ class GameTest {
     }
 
     @Test
-    void ShouldWinOnThirdTryAndHaveThreeTryLeft() {
+    void ShouldHaveThreeTryLeftGivenWonOnThirdTry() {
         TestGameUI ui = new TestGameUI("crabe", "arbre", "crane", "n");
         Game game = new Game(new ApiClientTest("CRANE"), ui, new GameService(), new WordService());
 
@@ -37,30 +37,30 @@ class GameTest {
     }
 
     @Test
-    void ShouldLooseAfterAllTriesAreUsed() {
+    void ShouldLooseGivenAllTriesAreUsed() {
         TestGameUI ui = new TestGameUI("crabe","arbre","barbe","grand","gland","gorge", "n");
         Game game = new Game(new ApiClientTest("CRANE"), ui, new GameService(), new WordService());
 
         game.startGame();
 
         assertThat(ui.displayedMessages).contains("Perdu ! La réponse était : " + List.of("C", "R", "A", "N", "E"));
-        assertThat(game.remainingTries).isEqualTo(0);
+        assertThat(game.remainingTries).isZero();
     }
 
     @Test
-    void ShouldWinAfterAnErrorIsCAughtBecauseOfWordLength() {
+    void ShouldThrowAnErrorGivenInputTooLongThenWin() {
 
         TestGameUI ui = new TestGameUI("troplongtroplong", "CRANE", "n");
         Game game = new Game(new ApiClientTest("CRANE"), ui, new GameService(), new WordService());
 
         game.startGame();
 
-        assertThat(ui.displayedMessages).anyMatch(m -> m.startsWith("ERREUR:"));
-        assertThat(ui.displayedMessages).contains("Bravo !");
+        assertThat(ui.displayedMessages).anyMatch(m -> m.startsWith("ERREUR:"))
+                                        .contains("Bravo !");
     }
 
     @Test
-    void ShouldWinThenAskForAReplayThenQuitHavingWonTwoTimes() {
+    void ShouldWinThenReplayThenQuit() {
         TestGameUI ui = new TestGameUI("crane", "y", "crane", "n");
         Game game = new Game(new ApiClientTest("CRANE"), ui, new GameService(), new WordService());
 
@@ -79,6 +79,17 @@ class GameTest {
 
         long winCount = ui.displayedMessages.stream().filter("Bravo !"::equals).count();
         assertThat(winCount).isEqualTo(1);
+    }
+
+    @Test
+    void ResponseListShouldContainThreeResponsesAfterThreeTries(){
+        TestGameUI ui = new TestGameUI("crabe", "arbre", "crane","n");
+        Game game = new Game(new ApiClientTest("CRANE"), ui, new GameService(), new WordService());
+
+        game.startGame();
+
+        int responseCount = game.responseList.getResponses().size();
+        assertThat(responseCount).isEqualTo(3);
     }
 
 }

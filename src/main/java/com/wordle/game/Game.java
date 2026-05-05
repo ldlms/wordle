@@ -30,7 +30,7 @@ public class Game {
         this(apiService, new ConsoleGameUI(), new GameService(), new WordService());
     }
 
-    //constructor used in handle replay
+    //constructor used in handle replay, allowing us to keep the same instances used in the game
     public Game(ApiService apiService, GameUI ui, GameService gameService, WordService wordService) {
         this.word = apiService.callApi();
         this.ui = ui;

@@ -16,7 +16,7 @@ class WordServiceTest {
     void setUp() { wordService = new WordService(); }
 
     @Test
-    void ShouldBeAbleToVerifyInput() {
+    void ShouldBeAbleToVerifyValidInputWhenGivenWord() {
         wordService.verifyInput("crane");
     }
 
@@ -27,7 +27,7 @@ class WordServiceTest {
     }
 
     @Test
-    void ShouldThrowExceptionWhenInputIsTooShort() {
+    void ShouldThrowExceptionWhenGivenWordTooShort() {
         assertThatThrownBy(() -> wordService.verifyInput("bl"))
                 .isInstanceOf(IncorrectSizeForInput.class);
     }
@@ -38,12 +38,12 @@ class WordServiceTest {
     }
 
     @Test
-    void ShouldDecodeUnicode() {
+    void ShouldDecodeUnicodeWhenGivenInput() {
         assertThat(WordService.decodeUnicode("caf\\u00e9")).isEqualTo("café");
     }
 
     @Test
-    void ShouldExtractFieldFromJson() {
+    void ShouldExtractFieldFromJsonWhenGivenJsonInput() {
         String json = "{\"id\":1,\"name\":\"crane\",\"size\":5}";
         assertThat(wordService.extractField(json, "name")).isEqualTo("crane");
     }

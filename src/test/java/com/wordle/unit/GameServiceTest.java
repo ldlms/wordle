@@ -72,8 +72,10 @@ class GameServiceTest {
     }
 
     @Test
-    void ShouldHaveCorrectSymbols(){
+    void ShouldDisplayCorrectSymbolsWhenGivenInput(){
+
         Response r = gameService.processInput("carte", word("CRANE"));
+
         assertThat(r.letters().get(0).getSymbol()).isEqualTo("✅"); //symbol for correct letter
         assertThat(r.letters().get(1).getSymbol()).isEqualTo("\uD83D\uDFE1"); // symbol for misplaced letter
         assertThat(r.letters().get(3).getSymbol()).isEqualTo("❌"); //symbol for incorrect letter
