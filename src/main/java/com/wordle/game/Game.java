@@ -2,6 +2,7 @@ package com.wordle.game;
 
 import com.wordle.UI.ConsoleGameUI;
 
+import com.wordle.dto.InputList;
 import com.wordle.dto.Response;
 import com.wordle.dto.ResponseList;
 import com.wordle.exceptions.IncorrectSizeForInput;
@@ -18,6 +19,7 @@ public class Game {
     public Boolean isGameComplete = false;
     public Integer remainingTries = 6;
     public ResponseList responseList = new ResponseList();
+    public InputList inputList = new InputList();
 
     private final GameUI ui;
     private final GameService gameService;
@@ -46,7 +48,9 @@ public class Game {
                 wordService.verifyInput(input);
 
                 Response result = gameService.processInput(input, this.word);
+                inputList.add(input);
                 responseList.addResponse(result);
+                ui.showInputList(inputList);
                 ui.showResponse(responseList);
                 remainingTries--;
 

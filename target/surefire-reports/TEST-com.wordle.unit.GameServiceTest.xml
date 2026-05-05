@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.1" name="com.wordle.unit.GameServiceTest" time="0.106" tests="6" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.1" name="com.wordle.unit.GameServiceTest" time="0.111" tests="6" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="25"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="FR"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-25\bin"/>
-    <property name="sun.java.command" value="C:\Users\leode\AppData\Local\Temp\surefire4199191126425152264\surefirebooter-20260505110637858_3.jar C:\Users\leode\AppData\Local\Temp\surefire4199191126425152264 2026-05-05T11-06-37_716-jvmRun1 surefire-20260505110637858_1tmp surefire_0-20260505110637858_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\leode\AppData\Local\Temp\surefire11101300591986355186\surefirebooter-20260505122258619_3.jar C:\Users\leode\AppData\Local\Temp\surefire11101300591986355186 2026-05-05T12-22-58_457-jvmRun1 surefire-20260505122258619_1tmp surefire_0-20260505122258619_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\leode\Desktop\wordle\target\test-classes;C:\Users\leode\Desktop\wordle\target\classes;C:\Users\leode\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.11.0\junit-jupiter-api-5.11.0.jar;C:\Users\leode\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\leode\.m2\repository\org\junit\platform\junit-platform-commons\1.11.0\junit-platform-commons-1.11.0.jar;C:\Users\leode\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\leode\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.11.0\junit-jupiter-params-5.11.0.jar;C:\Users\leode\.m2\repository\org\assertj\assertj-core\3.25.3\assertj-core-3.25.3.jar;C:\Users\leode\.m2\repository\net\bytebuddy\byte-buddy\1.14.11\byte-buddy-1.14.11.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\leode\AppData\Local\Temp\surefire4199191126425152264\surefirebooter-20260505110637858_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\leode\AppData\Local\Temp\surefire11101300591986355186\surefirebooter-20260505122258619_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="25.0.1+8-LTS-27"/>
@@ -59,10 +59,10 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="69.0"/>
   </properties>
-  <testcase name="ShouldDisplayCorrectSymbolsWhenGivenInput" classname="com.wordle.unit.GameServiceTest" time="0.057"/>
-  <testcase name="ShouldOnlyContainMisplacedLetters" classname="com.wordle.unit.GameServiceTest" time="0.01"/>
-  <testcase name="ShouldOnlyContainCorrectLetters" classname="com.wordle.unit.GameServiceTest" time="0.003"/>
-  <testcase name="ShouldHandleCorrectNumberOfIncorrectLetters" classname="com.wordle.unit.GameServiceTest" time="0.004"/>
-  <testcase name="ShouldOnlyContainIncorrectLetters" classname="com.wordle.unit.GameServiceTest" time="0.002"/>
+  <testcase name="ShouldDisplayCorrectSymbolsWhenGivenInput" classname="com.wordle.unit.GameServiceTest" time="0.078"/>
+  <testcase name="ShouldOnlyContainMisplacedLetters" classname="com.wordle.unit.GameServiceTest" time="0.008"/>
+  <testcase name="ShouldOnlyContainCorrectLetters" classname="com.wordle.unit.GameServiceTest" time="0.002"/>
+  <testcase name="ShouldHandleCorrectNumberOfIncorrectLetters" classname="com.wordle.unit.GameServiceTest" time="0.002"/>
+  <testcase name="ShouldOnlyContainIncorrectLetters" classname="com.wordle.unit.GameServiceTest" time="0.001"/>
   <testcase name="ShouldHaveFourthLetterIncorrect" classname="com.wordle.unit.GameServiceTest" time="0.001"/>
 </testsuite>

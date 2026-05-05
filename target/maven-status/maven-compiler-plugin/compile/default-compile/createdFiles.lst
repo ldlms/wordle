@@ -2,6 +2,7 @@ com\wordle\api\ApiClientTest.class
 com\wordle\UI\TestGameUI.class
 com\wordle\api\ApiClient.class
 com\wordle\dto\ResponseList.class
+com\wordle\dto\InputList.class
 com\wordle\services\GameService.class
 com\wordle\game\Game.class
 com\wordle\services\WordService.class

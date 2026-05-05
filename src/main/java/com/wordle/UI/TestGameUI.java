@@ -1,5 +1,6 @@
 package com.wordle.UI;
 
+import com.wordle.dto.InputList;
 import com.wordle.dto.ResponseList;
 import com.wordle.interfaces.GameUI;
 
@@ -33,4 +34,7 @@ public class TestGameUI implements GameUI {
     @Override public void showLose(List<String> word) { displayedMessages.add("Perdu ! La réponse était : " + word); }
     @Override public void showRemainingTries(int r) { displayedMessages.add("essais restants:" + r); }
     @Override public void showError(String msg) { displayedMessages.add("ERREUR:" + msg); }
+
+    @Override
+    public void showInputList(InputList inputList) {}
 }

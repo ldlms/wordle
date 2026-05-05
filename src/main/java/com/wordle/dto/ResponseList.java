@@ -11,8 +11,8 @@ public class ResponseList {
         return responses.stream().map(Response::display).toList();
     }
 
-    public List<String> addResponse(Response response) {
+    public void addResponse(Response response) {
         responses.add(response);
-        return getResponses();
+        getResponses();
     }
 }
