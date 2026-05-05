@@ -20,6 +20,7 @@ public record Response(List<Status> letters) {
         return !this.letters.contains(Status.INCORRECT) && !this.letters.contains(Status.MISPLACED);
     }
 
+
     public void setLetter(int letter, Status status) {
         letters.set(letter, status);
     }
